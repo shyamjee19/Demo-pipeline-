@@ -50,8 +50,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
-      - run: git fetch origin
-      - run: git diff origin/main...feature/update-message || echo "Diff generation skipped due to missing branch"
+      - run: git fetch origin --prune  # Fetch all branches and prune deleted ones
+      - run: git diff origin/main...feature/update-message || echo "Branch not found, skipping diff"
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
