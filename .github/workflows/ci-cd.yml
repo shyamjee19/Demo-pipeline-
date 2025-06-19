@@ -52,13 +52,11 @@ jobs:
         uses: actions/checkout@v3
     
       - run: |
-         git fetch origin main || true       
+         git fetch origin main || true
          git fetch origin feature/update-message || true
-         if git rev-parse --verify origin/feature/update-message >/dev/null 2>&1; then  
-         git diff origin/main...origin/feature/update-message
-         else
-         echo "Diff generation skipped: feature/update-message branch not found."
-         fi
+         git rev-parse --verify origin/feature/update-message >/dev/null 2>&1 && \
+          git diff origin/main...origin/feature/update-message || \
+          echo "Diff generation skipped due to missing branch"
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
