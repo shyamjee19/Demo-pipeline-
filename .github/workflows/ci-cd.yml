@@ -61,6 +61,7 @@ jobs:
 
       - name: Run tests
         run: npm test
+      - run: npm ci
       - run: npx jest
 
   deploy:
