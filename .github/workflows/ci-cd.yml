@@ -62,7 +62,7 @@ jobs:
       - name: Run tests
         run: npm test
       - run: npm ci
-      - run: npx test
+      - run: npx jest
 
   deploy:
     if: github.event_name == 'push'
